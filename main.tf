@@ -20,7 +20,7 @@ resource "incus_instance" "lab" {
     project = var.incus_project
 
     name = each.value.name
-    description = each.value.desc
+    description = each.value.image
     type = "virtual-machine"
     image = var.incus_images[each.value.image]
 

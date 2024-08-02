@@ -1,7 +1,6 @@
 variable "vm_config" {
   type = map(object({
     name               = string
-    desc               = string
     cores              = number
     memory             = string
     image              = string
