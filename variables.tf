@@ -23,4 +23,10 @@ variable "incus_network" {
 }
 variable "incus_images" {
   type = map(string)
+
+  default = {
+    "win10"   = "local:win10e",
+    "win2016" = "local:win2016",
+    "win2019" = "local:win2019",
+  }
 }

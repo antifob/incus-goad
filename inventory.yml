@@ -1,0 +1,19 @@
+---
+#
+# Site-specific Ansible variables
+#
+# If you'd like to override shared, group- or host-specific variables,
+# it can be done here.
+#
+all:
+  # all hosts
+  vars:
+
+  # host-specific
+  hosts:
+
+  # group-specific
+  #children:
+    # see groups `GOAD/ad/$lab/data/inventory`
+    #the_group_name:
+      #vars:

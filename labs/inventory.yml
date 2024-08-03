@@ -1,7 +1,15 @@
 ---
+#
+# The below variables are shared by all machines, unless overridden by:
+#
+#    - the lab ($repo/labs/$lab/inventory.yml);
+#    - the site-specific config ($repo/inventory.yml).
+#
+
 all:
   vars:
-    ansible_user: usr
+    # assuming images come from https://github.com/antifob/incus-windows/
+    ansible_user: admin
     ansible_password: changeme
     ansible_connection: winrm
     ansible_winrm_transport: basic
@@ -9,25 +17,13 @@ all:
     ansible_winrm_operation_timeout_sec: 400
     ansible_winrm_read_timeout_sec: 500
 
-    domain_name: GOAD-Light
     force_dns_server: false
+    dns_server: x.x.x.x
+
     two_adapters: true
     nat_adapter: 'Ethernet Instance 0'
     domain_adapter: 'Ethernet Instance 0'
+
     enable_http_proxy: false
     ad_http_proxy: http://x.x.x.x:xxxx
     ad_https_proxy: http://x.x.x.x:xxxx
-
-
-  hosts:
-    dc01:
-      ansible_host: 192.168.10.10
-      dns_domain: dc01
-
-    dc02:
-      ansible_host: 192.168.10.11
-      dns_domain: dc01
-
-    srv02:
-      ansible_host: 192.168.10.22
-      dns_domain: dc02

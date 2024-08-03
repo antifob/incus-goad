@@ -1,0 +1,22 @@
+---
+all:
+  hosts:
+    dc01:
+      ansible_host: 192.168.10.40
+      dns_domain: dc01
+      dict_key: dc01
+
+    srv01:
+      ansible_host: 192.168.10.41
+      dns_domain: dc01
+      dict_key: srv01
+
+    srv02:
+      ansible_host: 192.168.10.42
+      dns_domain: dc01
+      dict_key: srv02
+
+    ws01:
+      ansible_host: 192.168.10.4
+      dns_domain: dc01
+      dict_key: ws01
