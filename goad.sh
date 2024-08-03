@@ -75,6 +75,14 @@ if ! command -v incus >/dev/null; then
 fi
 
 if [ Xlocal != X"${2}" ]; then
+	# use a remote
+	if incus remote ls -fcsv | grep -q ^r,; then
+		# it already exists
+		if ! incus remote ls -fcsv | grep -qF "^r,${2},"; then
+			# but differs
+			incus remote rm r
+		fi
+	fi
 	incus remote add r "${2}" --protocol=simplestreams
 fi
 
