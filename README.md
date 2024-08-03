@@ -79,7 +79,7 @@ sh goad.sh GOAD local
 ## VPN Access
 
 If you'd like the container to serve as a VPN entrypoint to the lab,
-the content of `tools/vpn/` might be of interest. It automates the
+`tools/setup-wireguard.sh` might be of interest. It automates the
 deployment of a WireGuard server for unique 9 clients. Configurations
 are made available at `http://<SERVERIP>/`.
 
