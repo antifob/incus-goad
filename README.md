@@ -128,6 +128,15 @@ sh ./tools/import.sh ./output/win2019/
 __EOF__
 ```
 
+### Can I install the lab outside a container?
+
+The lab can be installed on any Incus server, but using a container to
+wrap it minimizes the efforts required to integrate it into an existing
+environment. If you'd still like to go that route, take a look at the
+`config.auto.tfvars` file and the relevant `inventory.yml` file for the
+lab you'd like to deploy. You might also want to edit `main.tf` for
+additional configuration keys for the VMs.
+
 
 ## References
 
