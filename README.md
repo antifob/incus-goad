@@ -12,7 +12,7 @@ inside an Incus container.
 
 This project makes use of the following technologies:
 
-- Incus, https://github.com/lxc/incus/
+- Incus, https://linuxcontainers.org/incus/
 - OpenTofu, https://opentofu.org/
 - Ansible, https://ansible.com/
 
