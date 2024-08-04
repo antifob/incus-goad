@@ -80,7 +80,7 @@ sh goad.sh GOAD local
 
 If you'd like the container to serve as a VPN entrypoint to the lab,
 `tools/setup-wireguard.sh` might be of interest. It automates the
-deployment of a WireGuard server for unique 9 clients. Configurations
+deployment of a WireGuard server for 9 unique clients. Configurations
 are made available at `http://<SERVERIP>/`.
 
 ```
@@ -107,7 +107,7 @@ the `labs/` directory).
 
 ## Frequently Asked Questions
 
-### How to VMs?
+### How to VM images?
 
 Assuming Incus is running and configured in the lab-hosting container...
 
@@ -136,6 +136,9 @@ environment. If you'd still like to go that route, take a look at the
 `config.auto.tfvars` file and the relevant `inventory.yml` file for the
 lab you'd like to deploy. You might also want to edit `main.tf` for
 additional configuration keys for the VMs.
+
+As long you deploy the lab on a dedicated host/VM/container, this
+project should work for you without much friction.
 
 
 ## References
