@@ -1,6 +1,3 @@
-# tofu plan -var-file=local.tfvars -var-file=labs/goad-light.tfvars
-# tofu apply -var-file=local.tfvars -var-file=labs/goad-light.tfvars
-
 terraform {
   required_providers {
     incus = {
