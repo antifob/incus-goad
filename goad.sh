@@ -37,6 +37,11 @@ if [ ! -d "${PROGBASE}/labs/${1}" ]; then
 	exit 1
 fi
 
+if ! grep -q 'Debian GNU/Linux 12 (bookworm)' /etc/os-release; then
+	printf 'error - Debian bookworm is expected\n'
+	exit 1
+fi
+
 # -------------------------------------------------------------------- #
 
 LAB="${1}"
@@ -101,15 +106,17 @@ printf '[+] Provisioning VMs\n'
 [ -d /opt/ansible/ ] || python3 -mvenv /opt/ansible
 . /opt/ansible/bin/activate
 
-pip install -r requirements.txt
+pip install -r requirements_311.yml
 
 
 cd GOAD/ansible
-ansible-galaxy collection install -r requirements.yml
+ansible-galaxy collection install -r requirements_311.yml
 
-# ordered by priority
-ANSIBLE_COMMAND="ansible-playbook -i ../ad/${LAB}/data/inventory -i ../../labs/inventory.yml -i ../../labs/${LAB}/inventory.yml -i ../../inventory.yml -e domain_name=${LAB}"
-
-export ANSIBLE_COMMAND LAB
-
-exec bash ../scripts/provisionning.sh
+# inventories ordered by priority
+exec ansible-playbook \
+	-i "../ad/${LAB}/data/inventory" \
+	-i "../../labs/inventory.yml" \
+	-i "../../labs/${LAB}/inventory.yml" \
+	-i "../../inventory.yml" \
+	-e "domain_name=${LAB}" \
+	main.yml
