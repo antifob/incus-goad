@@ -66,7 +66,7 @@ apt-get -y install git
 git clone --recurse-submodules --depth=1 https://github.com/antifob/incus-goad
 cd incus-goad
 
-# deploy the "GOAD" lab - VM images are stored locally
+# deploy the "GOAD" lab - VM images are stored locally (see FAQs)
 sh goad.sh GOAD local
 
 # deploy the "GOAD-Light" lab - VM images are stored remotely
@@ -81,7 +81,7 @@ sh goad.sh GOAD local
 If you'd like the container to serve as a VPN entrypoint to the lab,
 `tools/setup-wireguard.sh` might be of interest. It automates the
 deployment of a WireGuard server for 9 unique clients. Configurations
-are made available at `http://<SERVERIP>/`.
+are made available at `http://<CONTAINER-IP>/`.
 
 ```
 # in the lab-hosting container
