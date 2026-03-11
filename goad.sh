@@ -37,8 +37,8 @@ if [ ! -d "${PROGBASE}/labs/${1}" ]; then
 	exit 1
 fi
 
-if ! grep -q 'Debian GNU/Linux 12 (bookworm)' /etc/os-release; then
-	printf 'error - Debian bookworm is expected\n'
+if ! grep -q 'Debian GNU/Linux 13 (trixie)' /etc/os-release; then
+	printf 'error - Debian trixie is expected\n'
 	exit 1
 fi
 
@@ -106,17 +106,25 @@ printf '[+] Provisioning VMs\n'
 [ -d /opt/ansible/ ] || python3 -mvenv /opt/ansible
 . /opt/ansible/bin/activate
 
-pip install -r requirements_311.yml
+pip install -r GOAD/requirements_311.yml
 
 
 cd GOAD/ansible
 ansible-galaxy collection install -r requirements_311.yml
 
-# inventories ordered by priority
-exec ansible-playbook \
-	-i "../ad/${LAB}/data/inventory" \
-	-i "../../labs/inventory.yml" \
-	-i "../../labs/${LAB}/inventory.yml" \
-	-i "../../inventory.yml" \
-	-e "domain_name=${LAB}" \
-	main.yml
+# yq jq
+lsplaybooks() {
+	cat ../playbooks.yml | yq | jq -r "(if has(\"${LAB}\") then .\"${LAB}\" else .default end)[]"
+}
+
+for pl in $(lsplaybooks); do
+	# inventories ordered by priority
+	ansible-playbook \
+		-i "../ad/${LAB}/data/inventory" \
+		-i "../globalsettings.ini" \
+		-i "../../labs/inventory.yml" \
+		-i "../../labs/${LAB}/inventory.yml" \
+		-i "../../inventory.yml" \
+		-e "domain_name=${LAB}" \
+		"${pl}"
+done
