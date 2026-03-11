@@ -34,4 +34,11 @@ resource "incus_instance" "lab" {
         "ipv4.address" = each.value.ipv4
       }
     }
+    device {
+      name = "agent"
+      type = "disk"
+      properties = {
+        source = "agent:config"
+      }
+    }
 }
