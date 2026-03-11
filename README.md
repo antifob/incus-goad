@@ -21,7 +21,7 @@ This project makes use of the following technologies:
 
 There are two (2) main requirements to this project:
 
-- access to an Incus container running Debian bookworm with:
+- access to an Incus container running Debian trixie with:
   - sufficient resources to host your lab's VMs;
   - KVM passthrough for virtualization.
 - access to a VM image of each Windows edition used by our lab.
@@ -36,7 +36,7 @@ The following commands should get you started.
 
 ```
 # create the lab-hosting container
-incus init images:debian/bookworm goad -c security.nesting=true
+incus init images:debian/trixie goad -c security.nesting=true
 
 # resources - 8 CPUs, 16G of RAM, 128G of disk space
 incus config set goad limits.cpu=8 limits.memory=16GiB
@@ -61,7 +61,7 @@ For example:
 # incus exec goad bash
 
 apt-get update
-apt-get -y install git
+apt-get -y install git jq yq
 
 git clone --recurse-submodules --depth=1 https://github.com/antifob/incus-goad
 cd incus-goad
