@@ -11,6 +11,10 @@ all:
 
   # host-specific
   hosts:
+    lx01: # DRACARYS
+      # FIXME ideally this would be put elsewhere tofu can also pick up
+      ansible_incus_project: default
+      ansible_incus_remote: local
 
   # group-specific
   #children:

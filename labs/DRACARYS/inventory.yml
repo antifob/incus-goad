@@ -1,0 +1,20 @@
+---
+all:
+  hosts:
+    dc01:
+      ansible_host: 192.168.10.10
+      dns_domain: dc01
+      dict_key: dc01
+
+    srv01:
+      ansible_host: 192.168.10.11
+      dns_domain: dc01
+      dict_key: srv01
+
+    lx01:
+      ansible_host: 192.168.10.12
+      dns_domain: dc02
+      dict_key: lx01
+      ansible_connection: community.general.incus
+      ansible_incus_host: LX01
+      ansible_user: root

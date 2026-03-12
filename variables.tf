@@ -28,5 +28,7 @@ variable "incus_images" {
     "win10"   = "local:win10e",
     "win2016" = "local:win2016",
     "win2019" = "local:win2019",
+    "win2025" = "local:win2025",
+    "noble"   = "images:ubuntu/noble",
   }
 }
