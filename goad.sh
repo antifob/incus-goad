@@ -37,11 +37,6 @@ if [ ! -d "${PROGBASE}/labs/${1}" ]; then
 	exit 1
 fi
 
-if ! grep -q 'Debian GNU/Linux 13 (trixie)' /etc/os-release; then
-	printf 'error - Debian trixie is expected\n'
-	exit 1
-fi
-
 # -------------------------------------------------------------------- #
 
 LAB="${1}"

@@ -21,7 +21,7 @@ This project makes use of the following technologies:
 
 There are two (2) main requirements to this project:
 
-- access to an Incus container running Debian trixie with:
+- access to an Incus container running Debian/Ubuntu with:
   - sufficient resources to host your lab's VMs;
   - KVM passthrough for virtualization.
 - access to a VM image of each Windows edition used by our lab.
@@ -36,6 +36,8 @@ The following commands should get you started.
 
 ```
 # create the lab-hosting container
+#> if on Ubuntu, you probably want to use images:ubuntu/noble instead
+#> see https://discuss.linuxcontainers.org/t/apparmor-breaking-nested-incus-on-ubuntu-noble/26353/
 incus init images:debian/trixie goad -c security.nesting=true
 
 # resources - 8 CPUs, 16G of RAM, 128G of disk space
