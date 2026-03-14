@@ -106,6 +106,7 @@ pip install -r GOAD/requirements_311.yml
 
 cd GOAD/ansible
 ansible-galaxy collection install -r requirements_311.yml
+ansible-galaxy role install -r requirements_311.yml
 
 # yq jq
 lsplaybooks() {

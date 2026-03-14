@@ -27,3 +27,10 @@ all:
     enable_http_proxy: false
     ad_http_proxy: http://x.x.x.x:xxxx
     ad_https_proxy: http://x.x.x.x:xxxx
+
+  children:
+    linux_domain:
+      vars:
+        ansible_connection: community.general.incus
+        ansible_user: root
+        ansible_incus_host: "{{ inventory_hostname | upper }}"

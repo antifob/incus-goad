@@ -17,7 +17,9 @@ all:
       ansible_incus_remote: local
 
   # group-specific
-  #children:
+  children:
     # see groups `GOAD/ad/$lab/data/inventory`
-    #the_group_name:
-      #vars:
+    linux_domain:
+      vars:
+        ansible_incus_project: default
+        ansible_incus_remote: local
